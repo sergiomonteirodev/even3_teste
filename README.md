@@ -1,7 +1,7 @@
 # even3_teste
 
- Sistema/funcionalidades criada para participação na seleção da even3, foi usado como lingagem backend o python com seu microframework Flask, bem como HTMNL, CSS(BOOSTRAP4) e JS. Para envio dos emails usei o modulo sendgrid para python.
-OBS: Esse passo a passo supões que você tenha conhecimento necessario em plataforma linux e linguagem de programação python, tal qual, o gerenciador de pacotes pip e criação e operação em ambientes virtuais usando virtualenv.
+ Sistema/funcionalidades criada para participação na seleção da even3, foi usado como linguagem backend o python e seu microframework Flask, bem como para o frontend: HTML, CSS(BOOSTRAP4) e JS. Para envio dos emails usei o modulo sendgrid para python.
+OBS: Esse passo a passo supõe que se tenha conhecimento necessario em S.O linux e linguagem de programação python, tal qual, o gerenciador de pacotes pip e criação de ambientes virtuais usando virtualenv.
  
 # CONFIGURANDO O SENDGRID:
  
