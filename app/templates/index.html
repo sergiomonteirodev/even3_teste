@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Importação de certificado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename="css/imagem.css") }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Include Editor style. -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Even3 - Crie seu certificado</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>-->
+            <!-- <form class="form-inline mt-2 mt-md-0">
+         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>-->
+
+      </nav>
+
+
+  
+      <main role="main" class="container">
+            <p><h2>Criar modelo de certificado</h2></p>
+            
+            <form>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" name="myPhoto" onchange="PreviewImage();" id="uploadImage">
+                      <label class="custom-file-label" for="customFile">Informe o modelo</label>
+                    </div>
+                    <div class="upload"><a href="https://materiais.even3.com.br/templates-de-certificados" target="_blank"> Dica: Templates de certificado</a></div>
+            </form>
+            
+                       
+      <section id="certificado">     
+            <div class="jumbotron">
+                <form name="favoritos" id="favoritos">
+                      
+                          <div class="form-group">
+                              <label for="comment">Digite o texto do certificado:</label>
+                              <textarea class="form-control" rows="100" id="txt" name="field1"></textarea>
+                            
+                          </div>
+                          <!--<input type="button" onclick="javascript:addTag('b');" value="Bold" class="btn btn-dark btn-sm">
+                          <input type="button" onclick="javascript:addTag('i');" value="Italic" class="btn btn-light btn-sm">
+                          <input type="button" onclick="javascript:addTag('u');" value="Underline" class="btn btn-link btn-sm">-->
+                          <input type="button" name="btn_adicionar" id="btn_adicionar"  class="btn btn-primary btn-sm" value="Adicionar" onclick="addText()" />
+                          <input type="button" name="btn_gerarpdf" id="btn_gerarpdf" class="btn btn-primary btn-sm" value="Gerar PDF" onclick="javascript:genPDF()"/>
+                          <p id="caminho"></p>
+                          <a href="javascript:genPDF()" >Gerar pdf</a>
+                </form>
+                  <div class="content_certificado">
+                    <div id="conteudo"></div>  
+                    <img id="uploadPreview" style="width: 100%; height: auto;" />
+                    
+                  </div>    
+            </div>
+      </section>
+      <section id="importar_excel">
+          <p><h2>Importar dados do excel</h2></p>
+          <div class="jumbotron">
+            
+              <label for="comment">Copie e Cole sua lista do Excel:</label>
+              <textarea class="form-control" rows="20" id="txt-area" name="lista"></textarea>
+          <form method="POST" action="/send">
+            <textarea id="emails" name="emails" style="display:none;"></textarea>
+              <input type="submit" value="Enviar email"/>
+          </form> 
+          </div>
+        
+          
+          </div>
+
+      </section>
+     
+      </main>
+
+      
+      
+
+      
+
+     
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <!-- Include CSS for icons. -->
+
+<!-- Include jQuery lib. -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<!-- Include Editor JS files. -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+      <script src="{{ url_for('static', filename="js/script.js") }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename="js/jspdf.min.js") }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename="js/html2canvas.js") }}"></script>
+      <script type="text/javascript">
+
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+        
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("uploadPreview").src = oFREvent.target.result;
+            };
+        };</script>
+
+<!-- Include Editor JS files. -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
+
+<!-- Initialize the editor. -->
+<script>
+  $(function() {
+    $('textarea#txt').froalaEditor()({
+      // Set custom buttons with separator between them.
+      toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline'],
+    })
+   
+  });
+</script>
+
+<script>
+
+  $("#txt-area").change(function(){
+    var text = $("#txt-area").val();
+   
+   function extractEmails ( text ){
+           return text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+    }
+  /*function extractNames(text){
+
+    return text.match(/([a-zA-Z0-9._-])/);
+  }*/
+    
+       $("#emails").text(extractEmails(text));
+       //$("#nomes").text(extractNames(text));
+
+});
+  
+</script>
+
+    </body>
+</html>

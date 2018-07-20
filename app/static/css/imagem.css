@@ -1,0 +1,31 @@
+
+
+.texto{
+
+    margin-top: 0%;
+    width: auto;
+    height: auto;
+    margin-left: 4%;
+}
+ 
+  #uploadPreview {
+    margin-top: 5%;
+    
+  }
+  #certificado{
+
+    margin: 0 auto;
+  }
+  
+  #conteudo {
+    position: relative;
+    font-size: 16px;
+    left: 100px;
+    top: 330px;
+  }
+
+  .upload{
+
+    font-size: 12px;
+    float: right;
+  }
